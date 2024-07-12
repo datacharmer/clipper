@@ -1,0 +1,34 @@
+exec clipper -v
+stdout 'Clipper'
+! stderr .
+
+clear_clipboard
+dump_clipboard
+! stdout .
+! stderr .
+
+stdin file1.txt
+exec clipper
+stdout 'Updated clipboard successfully'
+! stderr .
+
+dump_clipboard
+stdout abcdefgh
+! stderr .
+
+exec clipper file2.txt
+stdout 'Updated clipboard successfully'
+! stderr .
+
+dump_clipboard
+stdout 'ijklmnopq'
+stdout 'rstuvwxyz'
+! stderr .
+
+
+-- file1.txt --
+abcdefgh
+
+-- file2.txt --
+ijklmnopq
+rstuvwxyz
